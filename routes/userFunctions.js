@@ -6,7 +6,7 @@ router.post('/register',(req,res)=>{
     Email:req.body.email,
     Name:req.body.name,
     Password:req.body.password,
-    Status:req.body.status
+    Status:false
   }).then(result=>{
     res.status(200).json({
       message:'User created'
