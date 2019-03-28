@@ -9,11 +9,13 @@
   "author": "hth",
   "license": "ISC",
   "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^4.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "ng-bootstrap": "^1.6.3",
     "sequelize": "^5.1.0"
   }
 }
