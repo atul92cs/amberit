@@ -9,13 +9,8 @@ const User=sequelize.define('users',{
   Status:{type:Datatypes.STRING,allowNull:true}
 });
 User.associate=(model)=>{
-  User.belongsToMany(model.Skill,{
-    onDelete:"CASCADE",
-    onUpdate:"CASCADE",
-    through: "userskills",
-    foreignKey:"Userid",
-    as:"Userid"
-
+  User.belongsTo(model.Skill,{
+    foreignKey:'Userid'
   });
 };
 return User;

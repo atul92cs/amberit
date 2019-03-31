@@ -12,13 +12,9 @@ module.exports=(sequelize,Datatypes)=>{
         onUpdate:"CASCADE"
 
     });
-  //  Subcategory.belongsToMany(model.Skill,{
-    //  foreignKey:'Skillid',
-    //  onDelete:"CASCADE",
-    //  onUpdate:"CASCADE",
-    //  through: "userskills",
-    //  as:"Skill"
-  //  });
-  };
+    Subcategory.belongsTo(model.Skill,{
+      foreignKey:'SkillId'
+    });
+};
   return Subcategory;
 };

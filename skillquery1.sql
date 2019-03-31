@@ -1,0 +1,1 @@
+SELECT subcategories.Name,userskills.Userid from ambelit.userskills  JOIN ambelit.subcategories ON userskills.Skill = subcategories.id where userskills.id = '4' ;
