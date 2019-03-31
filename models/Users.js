@@ -10,10 +10,10 @@ const User=sequelize.define('users',{
   Picture:{type:Datatypes.STRING,allowNull:true},
   Status:{type:Datatypes.STRING,allowNull:true}
 });
-User.associate=(model)=>{
+/*User.associate=(model)=>{
   User.belongsTo(model.Skill,{
     foreignKey:'Userid'
   });
-};
+};*/
 return User;
 };

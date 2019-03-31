@@ -5,7 +5,7 @@ module.exports=(sequelize,Datatypes)=>{
   Userid:{type:Datatypes.INTEGER,allowNull:false},
   Skill:{type:Datatypes.INTEGER,allowNull:false}
 });
-Skill.associate=(model)=>{
+/*Skill.associate=(model)=>{
    Skill.hasMany(model.User,{
      foreignKey:'Userid',
      as:'User'
@@ -14,6 +14,6 @@ Skill.associate=(model)=>{
      foreignKey:'SkillId',
      as:'Skills'
    });
-};
+};*/
    return Skill;
 };

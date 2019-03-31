@@ -77,4 +77,17 @@ router.put('/update/:id',(req,res)=>{
     });
   });
 });
+router.get('/:id',(req,res)=>{
+  const id=req.params.id;
+  model.User.findOne({where:{id:id}}).then(user=>{
+    res.status(200).json({
+      user
+    });
+  }).catch(err=>{
+      res.status(401).json({
+        message:'Error occured',
+        error:err
+      });
+  });
+});
 module.exports=router;
