@@ -46,11 +46,14 @@ router.delete('/:id',(req,res)=>{
         message:'Skill deleted'
       });
     }
-    res.status(404).json({
-      message:'Skill not found'
-    });
+    else {
+      res.status(404).json({
+        message:'Skill not found'
+      });  
+    }
+
   }).catch(err=>{
-    res.staus(401).json({
+    res.status(401).json({
       message:'Error occured',
       error:err
     });

@@ -59,4 +59,22 @@ router.post('/login',(req,res)=>{
        });
   });
 });
+router.put('/update/:id',(req,res)=>{
+  const id =req.params.id;
+  const Name=req.body.name;
+  const Email=req.body.email;
+  const Phone=req.body.phone;
+  const Location=req.body.location;
+  const Picture=req.body.picture;
+  model.User.update({Name:Name,Email:Email,Phone:Phone,Location:Location,Picture:Picture},{where:{id}}).then(result=>{
+    res.status(200).json({
+      message:'User updated'
+    });
+  }).catch(err=>{
+    res.status(401).json({
+      message:'Error occured',
+      error:err
+    });
+  });
+});
 module.exports=router;

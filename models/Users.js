@@ -6,6 +6,8 @@ const User=sequelize.define('users',{
   Name:{type:Datatypes.STRING,allowNull:false},
   Password:{type:Datatypes.STRING,allowNull:false},
   Phone:{type:Datatypes.STRING,allowNull:true},
+  Location:{type:Datatypes.STRING,allowNull:true},
+  Picture:{type:Datatypes.STRING,allowNull:true},
   Status:{type:Datatypes.STRING,allowNull:true}
 });
 User.associate=(model)=>{
