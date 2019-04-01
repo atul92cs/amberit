@@ -5,6 +5,7 @@ const userFunctions=require('./routes/UserFunctions');
 const categoryFunctions=require('./routes/categoryFunctions');
 const subcategoryFunctions=require('./routes/subcategoryFunctions');
 const skillFuctions=require('./routes/skillFunctions');
+const adFunctions=require('./routes/adFunctions');
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use('/ad',adFunctions);
 app.use('/user',userFunctions);
 app.use('/category',categoryFunctions);
 app.use('/subcategory',subcategoryFunctions);

@@ -11,11 +11,11 @@ const Ads=sequelize.define('ads',{
   Userid:{type:Datatypes.INTEGER,allowNull:false},
   Status:{type:Datatypes.STRING,allowNull:false}
 });
-Ads.associate=(models)=>{
+/*Ads.associate=(models)=>{
   Ads.belongsTo(models.User,{
     onDelete:"CASCADE",
     foreignKey: 'usersid'
   });
-};
+};*/
    return Ads;
 };
