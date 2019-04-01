@@ -51,7 +51,8 @@ router.post('/login',(req,res)=>{
       expiresIn:72000,
       email:fetchedUser.Email,
       name:fetchedUser.Name,
-      status:fetchedUser.Status
+      status:fetchedUser.Status,
+      id:fetchedUser.id
     });
   }).catch(err=>{
        res.status(406).json({
@@ -66,7 +67,7 @@ router.put('/update/:id',(req,res)=>{
   const Phone=req.body.phone;
   const Location=req.body.location;
   const Picture=req.body.picture;
-  model.User.update({Name:Name,Email:Email,Phone:Phone,Location:Location,Picture:Picture},{where:{id}}).then(result=>{
+  model.User.update({Name:Name,Email:Email,Phone:Phone,Location:Location,Picture:Picture,Status:"true"},{where:{id}}).then(result=>{
     res.status(200).json({
       message:'User updated'
     });
