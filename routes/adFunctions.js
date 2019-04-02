@@ -44,7 +44,7 @@ router.get('/',(req,res)=>{
   });
 });
 router.get('/ads',(req,res)=>{
-  model.sequelize.query(' select ads.Userid ,ads.id,ads.Date,ads.Title,ads.Content,ads.Picture,categories.Name as Category,subcategories.Name as Subcategory,users.Name as Username from ads join subcategories on ads.Subcategory=subcategories.id join categories on ads.Category=categories.id join users on ads.Userid=users.id',{type: model.sequelize.QueryTypes.SELECT}).then(result=>{
+  model.sequelize.query(' select ads.Userid ,ads.id,ads.Date,ads.Title,ads.Content,ads.Picture,categories.Name as Category,subcategories.Name as Subcategory,users.Name as Username from ads join subcategories on ads.Subcategory=subcategories.id join categories on ads.Category=categories.id join users on ads.Userid=users.id where ads.Status="true"',{type: model.sequelize.QueryTypes.SELECT}).then(result=>{
     res.status(200).json({
       result
     });
@@ -73,4 +73,16 @@ router.put('/:id',(req,res)=>{
      });
   });
 });
+router.get('/ads/:id',(req,res)=>{
+  const id=req.params.id;
+  model.sequelize.query('select ads.Userid,ads.id,ads.Date,ads.Status,ads.Title,ads.Content,ads.Picture,categories.Name as Category,subcategories.Name as Subcategory,users.Name as Username from ads join subcategories on ads.Subcategory=subcategories.id join categories on ads.Category=categories.id join users on ads.Userid=users.id where Userid =?',{replacements:[id],type:model.sequelize.QueryTypes.SELECT}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  }).catch(err=>{
+     res.status(401).json({
+       err
+     });
+  });
+})
 module.exports=router;
