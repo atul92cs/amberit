@@ -12,9 +12,7 @@ module.exports=(sequelize,Datatypes)=>{
         onUpdate:"CASCADE"
 
     });
-    Subcategory.belongsTo(model.Skill,{
-      foreignKey:'SkillId'
-    });
+    
 };
   return Subcategory;
 };
