@@ -4,7 +4,8 @@ module.exports=(sequelize,Datatypes)=>{
     id:{type:Datatypes.INTEGER,autoincrement:true,primaryKey:true},
     Text:{type:Datatypes.STRING,allowNull:false},
     senderId:{type:Datatypes.INTEGER,allowNull:false},
-    recieverId:{type:Datatypes.INTEGER,allowNull:false}
+    recieverId:{type:Datatypes.INTEGER,allowNull:false},
+    Adid:{type:Datatypes.INTEGER,allowNull:false}
   });
   Message.associate=(model)=>{
     Message.belongsTo(model.User,{
