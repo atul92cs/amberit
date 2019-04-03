@@ -4,6 +4,7 @@ const Skill=require('./Skill');
 const User=require('./Users');
 const Category=require('./Category');
 const Subcategory=require('./Subcategory');
+const Message=require('./Messages');
 const Sequelize=require('sequelize');
 
 const database=new Sequelize('ambelit','root','seed',{
@@ -16,7 +17,8 @@ const model={
   Skill:database.import('./Skill'),
   User:database.import('./Users'),
   Category:database.import('./Category'),
-  Subcategory:database.import('./Subcategory')
+  Subcategory:database.import('./Subcategory'),
+  Message:database.import('./Messages')
 };
 Object.keys(model).forEach((modelName)=>{
   if('associate' in model[modelName]){

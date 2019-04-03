@@ -6,6 +6,7 @@ const categoryFunctions=require('./routes/categoryFunctions');
 const subcategoryFunctions=require('./routes/subcategoryFunctions');
 const skillFuctions=require('./routes/skillFunctions');
 const adFunctions=require('./routes/adFunctions');
+const messageFunctions=require('./routes/messageFunctions');
 const app=express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -27,6 +28,7 @@ app.use('/user',userFunctions);
 app.use('/category',categoryFunctions);
 app.use('/subcategory',subcategoryFunctions);
 app.use('/skill',skillFuctions);
+app.use('/message',messageFunctions);
 app.listen(PORT,()=>{
   console.log('Server started on '+PORT);
 });
