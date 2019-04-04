@@ -23,15 +23,14 @@ router.post('/send',(req,res)=>{
     });
   });
 });
-router.get('/:sid/:ad',(req,res)=>{
+router.get('/:sid/:rid',(req,res)=>{
    const senderId=req.params.sid;
-   const Adid=req.params.ad;
+   const recieverId=req.params.rid;
   model.Message.findAll({
     where:{
-      Adid:Adid,
+      recieverId:recieverId,
       senderId:senderId
-    },
-    include:[{all:true}]
+    }
   }).then(result=>{
     res.status(200).json({
       result
