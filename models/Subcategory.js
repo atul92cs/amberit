@@ -5,14 +5,14 @@ module.exports=(sequelize,Datatypes)=>{
     Name:{type:Datatypes.STRING,allowNull:false},
     Categoryid:{type:Datatypes.INTEGER,allowNull:false}
   });
-  Subcategory.associate=(model)=>{
+/*  Subcategory.associate=(model)=>{
     Subcategory.belongsTo(model.Category,{
       foreignKey:'categoryid',
         onDelete:"CASCADE",
         onUpdate:"CASCADE"
 
     });
-    
-};
+
+};*/
   return Subcategory;
 };

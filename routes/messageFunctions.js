@@ -23,6 +23,14 @@ router.post('/send',(req,res)=>{
     });
   });
 });
+router.get('/:rid',(req,res)=>{
+  const recieverId=req.params.rid;
+  model.Message.count({where:{recieverId:recieverId}}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  });
+});
 router.get('/:sid/:rid',(req,res)=>{
    const senderId=req.params.sid;
    const recieverId=req.params.rid;

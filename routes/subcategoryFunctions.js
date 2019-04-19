@@ -18,7 +18,7 @@ router.post('/add',(req,res)=>{
 });
 router.get('/',(req,res)=>{
   models.Subcategory.findAll({
-    include:[{all:true}]
+  
   }).then(subcategories=>{
     res.status(200).json({
       subcategories
