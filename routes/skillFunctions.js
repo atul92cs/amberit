@@ -17,7 +17,7 @@ router.post('/add',(req,res)=>{
 });
 router.get('/:id',(req,res)=>{
      const id=req.params.id;
-    model.sequelize.query('select userskills.id,subcategories.Name from userskills join subcategories on userskills.Skill=subcategories.id where Userid=?',{replacements:[id], type: model.sequelize.QueryTypes.SELECT }).then(result=>
+    model.sequelize.query('select userskills.id,userskills.Skill,subcategories.Name from userskills join subcategories on userskills.Skill=subcategories.id where Userid=?',{replacements:[id], type: model.sequelize.QueryTypes.SELECT }).then(result=>
     res.status(200).json({
       result
     })).catch(err=>{
@@ -26,15 +26,28 @@ router.get('/:id',(req,res)=>{
 });
 router.put('/:id',(req,res)=>{
   const id=req.params.id;
-  const Userid=req.body.user;
+
   const Skill=req.body.skill;
-  model.Skill.update({Userid:Userid,Skill:Skill},{where:{id}}).then(result=>{res.status(200).json({
+  model.Skill.update({Skill:Skill},{where:{id}}).then(result=>{res.status(200).json({
     message:'Skill updated'
   })}).catch(err=>{
     res.status(401).json({
       message:'error occured',
       error:err
     })
+  });
+});
+router.get('/user/:id',(req,res)=>{
+  const id=req.params.id;
+  model.Skill.findOne({where:{id:id}}).then(skill=>{
+    res.status(200).json({
+      skill
+    });
+  }).catch(err=>{
+      res.status(402).json({
+        message:'Error occured',
+        error:err
+      });
   });
 });
 router.delete('/:id',(req,res)=>{
@@ -49,7 +62,7 @@ router.delete('/:id',(req,res)=>{
     else {
       res.status(404).json({
         message:'Skill not found'
-      });  
+      });
     }
 
   }).catch(err=>{
