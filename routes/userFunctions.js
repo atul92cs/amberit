@@ -60,6 +60,23 @@ router.post('/login',(req,res)=>{
        });
   });
 });
+router.put('/:id',(req,res)=>{
+  const id=req.params.id;
+  const Name=req.body.name;
+  const Phone=req.body.phone;
+  const Location=req.body.location;
+  model.User.update({Name:Name,Phone:Phone,Location:Location},{where:{id}}).then(result=>{
+    res.stats(200).json({
+      message:'User updated'
+    });
+  })
+  .catch(err=>{
+    res.status(402).json({
+      message:'Error occured',
+      error:err
+    });
+  });
+});
 router.put('/update/:id',(req,res)=>{
   const id =req.params.id;
   const Name=req.body.name;
