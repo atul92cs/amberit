@@ -14,4 +14,16 @@ router.post('/add',(req,res)=>{
     });
   });
 });
+router.get('/',(req,res)=>{
+  model.Category.findAll({}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  },err=>{
+     res.status(401).json({
+       message:'error occured',
+       error:err
+     });
+  });
+});
 module.exports=router;

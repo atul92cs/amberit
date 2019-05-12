@@ -1,6 +1,8 @@
 const express=require('express');
 const router=express.Router();
 const model=require('../models');
+const multer=require('multer');
+
 router.post('/create',(req,res)=>{
   const Date=req.body.date;
   const Title=req.body.title;

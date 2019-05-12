@@ -18,7 +18,7 @@ router.post('/add',(req,res)=>{
 });
 router.get('/',(req,res)=>{
   models.Subcategory.findAll({
-  
+
   }).then(subcategories=>{
     res.status(200).json({
       subcategories
@@ -27,6 +27,19 @@ router.get('/',(req,res)=>{
     res.status(501).json({
       error:err
     });
+  });
+});
+router.get('/:id',(req,res)=>{
+  const id=req.params.id;
+  models.Subcategory.findAll({where:{Categoryid:id}}).then(result=>{
+    res.status(200).json({
+      result
+    });
+  }).catch(err=>{
+       res.status(403).json({
+         message:'Error occured',
+         error:err
+       });
   });
 });
 module.exports=router;

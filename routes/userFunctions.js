@@ -2,7 +2,20 @@ const model=require('../models');
 const express=require('express');
 const jwt =require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
+const multer=require('multer');
+const cloudinary=require('cloudinary');
 const router =express.Router();
+const storage=multer.diskStorage({
+  fielname:(req,file,callback)=>{
+    callback(null,Date.now()+file.originalname);
+  }
+});
+const upload=multer({storage:storage});
+cloudinary.config({
+  cloud_name:'dkhk4gyey',
+  api_key:'459656749761335',
+  api_secret:'AS_y6ZzH7FAjeoIxF1IjtMFKzQg'
+});
 router.post('/register',(req,res)=>{
    bcrypt.hash(req.body.password,10).then(hash=>{
      const Name=req.body.name;
@@ -77,13 +90,14 @@ router.put('/:id',(req,res)=>{
     });
   });
 });
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:id',upload.single('picture'),async(req,res)=>{
+  const pic=await cloudinary.v2.uploader.upload(req.body.picture);
   const id =req.params.id;
   const Name=req.body.name;
   const Email=req.body.email;
   const Phone=req.body.phone;
   const Location=req.body.location;
-  const Picture=req.body.picture;
+  const Picture=pic.url;
   model.User.update({Name:Name,Email:Email,Phone:Phone,Location:Location,Picture:Picture,Status:"true"},{where:{id}}).then(result=>{
     res.status(200).json({
       message:'User updated'
